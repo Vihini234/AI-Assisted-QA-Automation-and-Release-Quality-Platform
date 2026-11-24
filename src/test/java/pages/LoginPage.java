@@ -3,6 +3,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
@@ -18,6 +19,9 @@ public class LoginPage extends BasePage {
 
     private final By errorMessage =
             By.cssSelector("[data-test='error']");
+
+    private final By inventoryTitle =
+            By.className("title");
 
     // Constructor
     public LoginPage(WebDriver driver) {
@@ -54,5 +58,11 @@ public class LoginPage extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLogin();
+        wait.until(
+                ExpectedConditions.urlContains("inventory.html")
+        );
+        wait.until(
+                ExpectedConditions.textToBe(inventoryTitle, "Products")
+        );
     }
 }

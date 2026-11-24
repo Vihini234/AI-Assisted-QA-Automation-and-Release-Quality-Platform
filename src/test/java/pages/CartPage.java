@@ -3,6 +3,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartPage extends BasePage {
 
@@ -26,5 +27,13 @@ public class CartPage extends BasePage {
     // Click checkout
     public void clickCheckout() {
         click(checkoutButton);
+        wait.until(
+                ExpectedConditions.urlContains("checkout-step-one")
+        );
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.id("checkout_info_container")
+                )
+        );
     }
 }

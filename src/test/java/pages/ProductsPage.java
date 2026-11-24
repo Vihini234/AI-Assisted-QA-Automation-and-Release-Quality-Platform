@@ -3,6 +3,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductsPage extends BasePage {
 
@@ -19,6 +20,9 @@ public class ProductsPage extends BasePage {
     private final By cartBadge =
             By.className("shopping_cart_badge");
 
+    private final By removeFirstProductButton =
+            By.id("remove-sauce-labs-backpack");
+
     // Constructor
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -32,6 +36,14 @@ public class ProductsPage extends BasePage {
     // Add first product
     public void addFirstProductToCart() {
         click(firstAddToCartButton);
+        wait.until(
+                ExpectedConditions.or(
+                        ExpectedConditions.textToBe(cartBadge, "1"),
+                        ExpectedConditions.visibilityOfElementLocated(
+                                removeFirstProductButton
+                        )
+                )
+        );
     }
 
     // Get cart count
@@ -42,5 +54,14 @@ public class ProductsPage extends BasePage {
     // Open shopping cart
     public void openCart() {
         click(shoppingCart);
+        wait.until(
+                ExpectedConditions.urlContains("cart.html")
+        );
+        wait.until(
+                ExpectedConditions.textToBe(
+                        By.className("title"),
+                        "Your Cart"
+                )
+        );
     }
 }
