@@ -20,6 +20,9 @@ public class ProductsPage extends BasePage {
     private final By cartBadge =
             By.className("shopping_cart_badge");
 
+    private final By removeFirstProductButton =
+            By.id("remove-sauce-labs-backpack");
+
     // Constructor
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -34,7 +37,12 @@ public class ProductsPage extends BasePage {
     public void addFirstProductToCart() {
         click(firstAddToCartButton);
         wait.until(
-                ExpectedConditions.textToBe(cartBadge, "1")
+                ExpectedConditions.or(
+                        ExpectedConditions.textToBe(cartBadge, "1"),
+                        ExpectedConditions.visibilityOfElementLocated(
+                                removeFirstProductButton
+                        )
+                )
         );
     }
 
@@ -48,6 +56,12 @@ public class ProductsPage extends BasePage {
         click(shoppingCart);
         wait.until(
                 ExpectedConditions.urlContains("cart.html")
+        );
+        wait.until(
+                ExpectedConditions.textToBe(
+                        By.className("title"),
+                        "Your Cart"
+                )
         );
     }
 }

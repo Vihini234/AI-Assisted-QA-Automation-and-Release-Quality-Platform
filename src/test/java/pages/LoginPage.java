@@ -20,6 +20,9 @@ public class LoginPage extends BasePage {
     private final By errorMessage =
             By.cssSelector("[data-test='error']");
 
+    private final By inventoryTitle =
+            By.className("title");
+
     // Constructor
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -57,6 +60,9 @@ public class LoginPage extends BasePage {
         clickLogin();
         wait.until(
                 ExpectedConditions.urlContains("inventory.html")
+        );
+        wait.until(
+                ExpectedConditions.textToBe(inventoryTitle, "Products")
         );
     }
 }
