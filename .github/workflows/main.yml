@@ -41,6 +41,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-test-results
-          path: allure-results/
+          path: target/allure-results/
           if-no-files-found: warn
           retention-days: 14
