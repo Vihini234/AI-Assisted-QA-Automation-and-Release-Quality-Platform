@@ -1,0 +1,17 @@
+[
+  {
+    "title": "QA Automation Project 1",
+    "body": "Testing API with first data set",
+    "userId": 1
+  },
+  {
+    "title": "QA Automation Project 2",
+    "body": "Testing API with second data set",
+    "userId": 2
+  },
+  {
+    "title": "QA Automation Project 3",
+    "body": "Testing API with third data set",
+    "userId": 3
+  }
+]
