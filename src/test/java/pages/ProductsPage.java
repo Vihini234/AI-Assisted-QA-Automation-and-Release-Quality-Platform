@@ -3,6 +3,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductsPage extends BasePage {
 
@@ -32,6 +33,9 @@ public class ProductsPage extends BasePage {
     // Add first product
     public void addFirstProductToCart() {
         click(firstAddToCartButton);
+        wait.until(
+                ExpectedConditions.textToBe(cartBadge, "1")
+        );
     }
 
     // Get cart count
@@ -42,5 +46,8 @@ public class ProductsPage extends BasePage {
     // Open shopping cart
     public void openCart() {
         click(shoppingCart);
+        wait.until(
+                ExpectedConditions.urlContains("cart.html")
+        );
     }
 }

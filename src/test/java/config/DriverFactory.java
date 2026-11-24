@@ -17,6 +17,8 @@ public class DriverFactory {
 
             options.addArguments("--start-maximized");
             options.addArguments("--disable-features=PasswordLeakDetection");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
 
             options.setExperimentalOption(
                     "prefs",
